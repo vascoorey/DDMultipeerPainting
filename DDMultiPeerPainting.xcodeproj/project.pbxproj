@@ -21,6 +21,8 @@
 		BC243BA918356C6A00827591 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC243B8B18356C6A00827591 /* UIKit.framework */; };
 		BC243BB118356C6A00827591 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC243BAF18356C6A00827591 /* InfoPlist.strings */; };
 		BC243BB318356C6A00827591 /* DDMultiPeerPaintingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */; };
+		BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBD1835746F00827591 /* DDDrawingView.m */; };
+		BC243BBF1835770900827591 /* DDDrawingView.h in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBC1835746F00827591 /* DDDrawingView.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		BC243BAE18356C6A00827591 /* DDMultiPeerPaintingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DDMultiPeerPaintingTests-Info.plist"; sourceTree = "<group>"; };
 		BC243BB018356C6A00827591 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMultiPeerPaintingTests.m; sourceTree = "<group>"; };
+		BC243BBC1835746F00827591 /* DDDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDDrawingView.h; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.h; sourceTree = "<group>"; };
+		BC243BBD1835746F00827591 /* DDDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDDrawingView.m; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,8 @@
 				BC243B9918356C6A00827591 /* Main.storyboard */,
 				BC243B9C18356C6A00827591 /* DDViewController.h */,
 				BC243B9D18356C6A00827591 /* DDViewController.m */,
+				BC243BBC1835746F00827591 /* DDDrawingView.h */,
+				BC243BBD1835746F00827591 /* DDDrawingView.m */,
 				BC243B9F18356C6A00827591 /* Images.xcassets */,
 				BC243B8E18356C6A00827591 /* Supporting Files */,
 			);
@@ -251,6 +257,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC243B9818356C6A00827591 /* DDAppDelegate.m in Sources */,
+				BC243BBF1835770900827591 /* DDDrawingView.h in Sources */,
+				BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */,
 				BC243B9E18356C6A00827591 /* DDViewController.m in Sources */,
 				BC243B9418356C6A00827591 /* main.m in Sources */,
 			);
@@ -463,6 +471,7 @@
 				BC243BB818356C6A00827591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BC243BB918356C6A00827591 /* Build configuration list for PBXNativeTarget "DDMultiPeerPaintingTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +480,7 @@
 				BC243BBB18356C6A00827591 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
