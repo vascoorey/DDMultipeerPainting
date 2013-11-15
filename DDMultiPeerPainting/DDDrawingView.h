@@ -19,5 +19,6 @@
 @interface DDDrawingView : UIView
 @property (nonatomic, weak) id <Drawing> delegate;
 -(void)addPath:(UIBezierPath *)path;
--(void)setPathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point;
+-(void)updatePathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point;
+-(void)updatePathWithKey:(id)key state:(DDDrawingState)state points:(NSArray *)points;
 @end

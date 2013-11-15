@@ -19,7 +19,10 @@ typedef NS_ENUM(NSInteger, DDDrawingState)
 @import MultipeerConnectivity;
 
 @interface DDDrawingData : NSObject <NSCoding>
+@property (nonatomic, strong) NSArray *points;
 @property (nonatomic) CGPoint point;
 @property (nonatomic) DDDrawingState state;
 +(instancetype)dataWithPoint:(CGPoint)point state:(DDDrawingState)state;
++(instancetype)dataWithMultiplePointsStartingWith:(CGPoint)point state:(DDDrawingState)state;
+-(void)addPoint:(CGPoint)point;
 @end

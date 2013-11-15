@@ -9,6 +9,7 @@
 #import "DDDrawingData.h"
 
 static NSString *const PointKey = @"com.deltadog.multipeerpainting.point";
+static NSString *const PointsKey = @"com.deltadog.multipeerpainting.points";
 static NSString *const StateKey = @"com.deltadog.multipeerpainting.state";
 
 @implementation DDDrawingData
@@ -20,6 +21,7 @@ static NSString *const StateKey = @"com.deltadog.multipeerpainting.state";
     NSValue *value = [aDecoder decodeObjectForKey:PointKey];
     _point = value.CGPointValue;
     _state = [aDecoder decodeIntegerForKey:StateKey];
+    _points = [aDecoder decodeObjectForKey:PointsKey];
   }
   return self;
 }
@@ -28,6 +30,7 @@ static NSString *const StateKey = @"com.deltadog.multipeerpainting.state";
 {
   [aCoder encodeObject:[NSValue valueWithCGPoint:self.point] forKey:PointKey];
   [aCoder encodeInteger:self.state forKey:StateKey];
+  [aCoder encodeObject:self.points forKey:PointsKey];
 }
 
 +(instancetype)dataWithPoint:(CGPoint)point state:(DDDrawingState)state
@@ -36,6 +39,19 @@ static NSString *const StateKey = @"com.deltadog.multipeerpainting.state";
   data.point = point;
   data.state = state;
   return data;
+}
+
++(instancetype)dataWithMultiplePointsStartingWith:(CGPoint)point state:(DDDrawingState)state
+{
+  DDDrawingData *data = [[self alloc] init];
+  data.points = [NSArray arrayWithObject:[NSValue valueWithCGPoint:point]];
+  data.state = state;
+  return data;
+}
+
+-(void)addPoint:(CGPoint)point
+{
+  self.points = [self.points arrayByAddingObject:[NSValue valueWithCGPoint:point]];
 }
 
 @end

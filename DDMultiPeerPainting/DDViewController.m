@@ -12,6 +12,7 @@
 
 @import MultipeerConnectivity;
 
+static NSUInteger const TickResolution = 5;
 static NSString *const DDServiceType = @"deltadogdrawing";
 
 @interface DDViewController () <MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate, Drawing>
@@ -22,6 +23,8 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 @property (nonatomic, strong) MCPeerID *myPeer;
 @property (nonatomic, strong) NSMutableArray *peers;
 @property (nonatomic, strong) UIBezierPath *currentPath;
+@property (nonatomic, strong) DDDrawingData *currentData;
+@property (nonatomic) NSUInteger ticksElapsed;
 @end
 
 @implementation DDViewController
@@ -94,7 +97,14 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 //    [self.drawingView addPath:receivedPath];
 //    [self.view setNeedsDisplay];
     DDDrawingData *drawingData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    [self.drawingView setPathWithKey:peerID state:drawingData.state point:drawingData.point];
+    if(drawingData.points)
+    {
+      [self.drawingView updatePathWithKey:peerID state:drawingData.state points:drawingData.points];
+    }
+    else
+    {
+      [self.drawingView updatePathWithKey:peerID state:drawingData.state point:drawingData.point];
+    }
   });
 }
 
@@ -143,14 +153,49 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 
 -(void)drawingView:(DDDrawingView *)drawingView didDrawPoint:(CGPoint)point withState:(DDDrawingState)state
 {
-  DDDrawingData *drawingData = [DDDrawingData dataWithPoint:point state:state];
   NSError *error = nil;
-  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drawingData];
-  NSLog(@"Size to send: %lu", (unsigned long)data.length);
-  [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
-  if(error)
+  NSData *data;
+  if(state == DDDrawingStateEnded && self.currentData)
   {
-    NSLog(@"%@", error.localizedDescription);
+    data = [NSKeyedArchiver archivedDataWithRootObject:self.currentData];
+    NSLog(@"Size to send: %lu", (unsigned long)data.length);
+    [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
+    self.currentData = nil;
+    self.ticksElapsed = 0;
+  }
+  else if(state == DDDrawingStateMoved)
+  {
+    if(!self.currentData)
+    {
+      self.currentData = [DDDrawingData dataWithMultiplePointsStartingWith:point state:DDDrawingStateMoved];
+    }
+    else
+    {
+      [self.currentData addPoint:point];
+      if(self.ticksElapsed > TickResolution)
+      {
+        data = [NSKeyedArchiver archivedDataWithRootObject:self.currentData];
+        NSLog(@"Size to send: %lu", (unsigned long)data.length);
+        [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
+        self.currentData = nil;
+        self.ticksElapsed = 0;
+      }
+      else
+      {
+        self.ticksElapsed ++;
+      }
+    }
+  }
+  if(state != DDDrawingStateMoved)
+  {
+    DDDrawingData *drawingData = [DDDrawingData dataWithPoint:point state:state];
+    data = [NSKeyedArchiver archivedDataWithRootObject:drawingData];
+    NSLog(@"Size to send: %lu", (unsigned long)data.length);
+    [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
+    if(error)
+    {
+      NSLog(@"%@", error.localizedDescription);
+    }
   }
 }
 

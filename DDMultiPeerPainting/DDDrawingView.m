@@ -33,7 +33,7 @@
   [self setNeedsDisplay];
 }
 
--(void)setPathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point
+-(void)updatePathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point
 {
   switch (state) {
     case DDDrawingStateBegan:
@@ -62,6 +62,16 @@
     }
     default:
       break;
+  }
+  [self setNeedsDisplay];
+}
+
+-(void)updatePathWithKey:(id)key state:(__unused DDDrawingState)state points:(NSArray *)points
+{
+  UIBezierPath *path = self.livePaths[key];
+  for(NSValue *value in points)
+  {
+    [path addLineToPoint:value.CGPointValue];
   }
   [self setNeedsDisplay];
 }

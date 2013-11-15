@@ -22,7 +22,6 @@
 		BC243BB118356C6A00827591 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC243BAF18356C6A00827591 /* InfoPlist.strings */; };
 		BC243BB318356C6A00827591 /* DDMultiPeerPaintingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */; };
 		BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBD1835746F00827591 /* DDDrawingView.m */; };
-		BC243BBF1835770900827591 /* DDDrawingView.h in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBC1835746F00827591 /* DDDrawingView.h */; };
 		BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE4575718363A9D005BE574 /* DDDrawingData.m */; };
 /* End PBXBuildFile section */
 
@@ -262,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC243B9818356C6A00827591 /* DDAppDelegate.m in Sources */,
-				BC243BBF1835770900827591 /* DDDrawingView.h in Sources */,
 				BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */,
 				BC243B9E18356C6A00827591 /* DDViewController.m in Sources */,
 				BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */,
