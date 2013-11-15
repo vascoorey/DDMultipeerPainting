@@ -23,6 +23,7 @@
 		BC243BB318356C6A00827591 /* DDMultiPeerPaintingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */; };
 		BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBD1835746F00827591 /* DDDrawingView.m */; };
 		BC243BBF1835770900827591 /* DDDrawingView.h in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBC1835746F00827591 /* DDDrawingView.h */; };
+		BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE4575718363A9D005BE574 /* DDDrawingData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMultiPeerPaintingTests.m; sourceTree = "<group>"; };
 		BC243BBC1835746F00827591 /* DDDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDDrawingView.h; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.h; sourceTree = "<group>"; };
 		BC243BBD1835746F00827591 /* DDDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDDrawingView.m; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.m; sourceTree = "<group>"; };
+		BCE4575618363A9D005BE574 /* DDDrawingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDrawingData.h; sourceTree = "<group>"; };
+		BCE4575718363A9D005BE574 /* DDDrawingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDrawingData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				BC243B9918356C6A00827591 /* Main.storyboard */,
 				BC243B9C18356C6A00827591 /* DDViewController.h */,
 				BC243B9D18356C6A00827591 /* DDViewController.m */,
+				BCE4575618363A9D005BE574 /* DDDrawingData.h */,
+				BCE4575718363A9D005BE574 /* DDDrawingData.m */,
 				BC243BBC1835746F00827591 /* DDDrawingView.h */,
 				BC243BBD1835746F00827591 /* DDDrawingView.m */,
 				BC243B9F18356C6A00827591 /* Images.xcassets */,
@@ -260,6 +265,7 @@
 				BC243BBF1835770900827591 /* DDDrawingView.h in Sources */,
 				BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */,
 				BC243B9E18356C6A00827591 /* DDViewController.m in Sources */,
+				BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */,
 				BC243B9418356C6A00827591 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

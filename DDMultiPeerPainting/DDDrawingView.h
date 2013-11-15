@@ -7,13 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDDrawingData.h"
 
 @class DDDrawingView;
 @protocol Drawing <NSObject>
+-(void)drawingView:(DDDrawingView *)drawingView didDrawPoint:(CGPoint)point withState:(DDDrawingState)state;
+@optional
 -(void)drawingView:(DDDrawingView *)drawingView didAddPath:(UIBezierPath *)path;
 @end
 
 @interface DDDrawingView : UIView
 @property (nonatomic, weak) id <Drawing> delegate;
 -(void)addPath:(UIBezierPath *)path;
+-(void)setPathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point;
 @end

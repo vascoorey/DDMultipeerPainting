@@ -8,6 +8,7 @@
 
 #import "DDViewController.h"
 #import "DDDrawingView.h"
+#import "DDDrawingData.h"
 
 @import MultipeerConnectivity;
 
@@ -89,9 +90,11 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 -(void)session:(MCSession *)session didReceiveData:(NSData *)data fromPeer:(MCPeerID *)peerID
 {
   dispatch_async(dispatch_get_main_queue(), ^{
-    UIBezierPath *receivedPath = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    [self.drawingView addPath:receivedPath];
-    [self.view setNeedsDisplay];
+//    UIBezierPath *receivedPath = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+//    [self.drawingView addPath:receivedPath];
+//    [self.view setNeedsDisplay];
+    DDDrawingData *drawingData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    [self.drawingView setPathWithKey:peerID state:drawingData.state point:drawingData.point];
   });
 }
 
@@ -99,10 +102,12 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 {
   if(state == MCSessionStateConnected)
   {
+    NSLog(@"Connected to %@", peerID);
     [self.peers addObject:peerID];
   }
   else
   {
+    NSLog(@"Lost connection to %@", peerID);
     [self.peers removeObject:peerID];
   }
 }
@@ -124,10 +129,25 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 
 #pragma mark - Drawing Delegate
 
--(void)drawingView:(DDDrawingView *)drawingView didAddPath:(UIBezierPath *)path
+//-(void)drawingView:(DDDrawingView *)drawingView didAddPath:(UIBezierPath *)path
+//{
+//  NSError *error;
+//  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:path];
+//  NSLog(@"Size to send: %lu", (unsigned long)data.length);
+//  [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
+//  if(error)
+//  {
+//    NSLog(@"%@", error.localizedDescription);
+//  }
+//}
+
+-(void)drawingView:(DDDrawingView *)drawingView didDrawPoint:(CGPoint)point withState:(DDDrawingState)state
 {
-  NSError *error;
-  [self.session sendData:[NSKeyedArchiver archivedDataWithRootObject:path] toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
+  DDDrawingData *drawingData = [DDDrawingData dataWithPoint:point state:state];
+  NSError *error = nil;
+  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drawingData];
+  NSLog(@"Size to send: %lu", (unsigned long)data.length);
+  [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
   if(error)
   {
     NSLog(@"%@", error.localizedDescription);
