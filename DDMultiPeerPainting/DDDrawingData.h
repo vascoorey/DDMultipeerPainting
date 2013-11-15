@@ -18,8 +18,8 @@ typedef NS_ENUM(NSInteger, DDDrawingState)
 
 @import MultipeerConnectivity;
 
-@interface DDDrawingData : NSObject <NSCoding>
+@interface DDDrawingData : NSObject
 @property (nonatomic) CGPoint point;
 @property (nonatomic) DDDrawingState state;
-+(instancetype)dataWithPoint:(CGPoint)point state:(DDDrawingState)state;
++(instancetype)drawingDataWithPoint:(CGPoint)point state:(DDDrawingState)state;
 @end

@@ -13,6 +13,9 @@
 @import MultipeerConnectivity;
 
 static NSString *const DDServiceType = @"deltadogdrawing";
+static NSString *const DDState = @"drawingstate";
+static NSString *const DDXCoordinate = @"x-coordinate";
+static NSString *const DDYCoordinate = @"y-coordinate";
 
 @interface DDViewController () <MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate, Drawing>
 @property (nonatomic, strong) DDDrawingView *drawingView;
@@ -93,8 +96,15 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 //    UIBezierPath *receivedPath = [NSKeyedUnarchiver unarchiveObjectWithData:data];
 //    [self.drawingView addPath:receivedPath];
 //    [self.view setNeedsDisplay];
-    DDDrawingData *drawingData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    [self.drawingView setPathWithKey:peerID state:drawingData.state point:drawingData.point];
+    NSError *error;
+    NSDictionary *dictionary = [NSPropertyListSerialization propertyListWithData:data options:0 format:0 error:&error];
+    NSLog(@"%@", dictionary);
+    if(error)
+    {
+      NSLog(@"%@", error.localizedDescription);
+      return;
+    }
+    [self.drawingView setPathWithKey:peerID state:[dictionary[DDState] integerValue] point:CGPointMake([dictionary[DDXCoordinate] doubleValue], [dictionary[DDYCoordinate] doubleValue])];
   });
 }
 
@@ -143,9 +153,14 @@ static NSString *const DDServiceType = @"deltadogdrawing";
 
 -(void)drawingView:(DDDrawingView *)drawingView didDrawPoint:(CGPoint)point withState:(DDDrawingState)state
 {
-  DDDrawingData *drawingData = [DDDrawingData dataWithPoint:point state:state];
   NSError *error = nil;
-  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:drawingData];
+  NSDictionary *dictionary = @{ DDState : @(state), DDXCoordinate : @(point.x), DDYCoordinate : @(point.y) };
+  NSData *data = [NSPropertyListSerialization dataWithPropertyList:dictionary format:NSPropertyListBinaryFormat_v1_0 options:0 error:&error];
+  if(error)
+  {
+    NSLog(@"%@", error.localizedDescription);
+    return;
+  }
   NSLog(@"Size to send: %lu", (unsigned long)data.length);
   [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
   if(error)
