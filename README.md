@@ -5,7 +5,10 @@ Exploring the multipeer connectivity framework.
 
 # Todo
 
-* Handle disconnections.
-* Stream touch movements (should't have to wait until touchesEnded:)
+* Make canvas a scrollview (scroll with 2 fingers)
 * Improve drawing
+  * Colors
+  * Line thickness
+  * Brushes ?
+  * Move to OpenGL/SpriteKit code ?
 * etc

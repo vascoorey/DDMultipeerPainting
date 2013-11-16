@@ -16,16 +16,43 @@
 
 @implementation DDDrawingView
 
+#pragma mark - Lifecycle
+
+-(void)initialize
+{
+  _paths = [NSMutableArray array];
+  _livePaths = [NSMutableDictionary dictionary];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
   self = [super initWithFrame:frame];
   if (self) {
     // Initialization code
-    _paths = [NSMutableArray array];
-    _livePaths = [NSMutableDictionary dictionary];
+    [self initialize];
   }
   return self;
 }
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+  if((self = [super initWithCoder:aDecoder]))
+  {
+    [self initialize];
+  }
+  return self;
+}
+
+-(id)init
+{
+  if((self = [super init]))
+  {
+    [self initialize];
+  }
+  return self;
+}
+
+#pragma mark - Paths
 
 -(void)addPath:(UIBezierPath *)path
 {
@@ -33,7 +60,7 @@
   [self setNeedsDisplay];
 }
 
--(void)setPathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point
+-(void)updatePathWithKey:(id)key state:(DDDrawingState)state point:(CGPoint)point
 {
   switch (state) {
     case DDDrawingStateBegan:
@@ -46,7 +73,15 @@
     case DDDrawingStateMoved:
     {
       UIBezierPath *path = self.livePaths[key];
-      [path addLineToPoint:point];
+      if(!path)
+      {
+        path = [UIBezierPath bezierPath];
+        [path moveToPoint:point];
+      }
+      else
+      {
+        [path addLineToPoint:point];
+      }
       break;
     }
     case DDDrawingStateEnded:
@@ -65,6 +100,15 @@
   }
   [self setNeedsDisplay];
 }
+
+-(void)clear
+{
+  self.livePaths = [NSMutableDictionary dictionary];
+  self.paths = [NSMutableArray array];
+  [self setNeedsDisplay];
+}
+
+#pragma mark - Drawing
 
 -(void)drawRect:(CGRect)rect
 {

@@ -1,0 +1,13 @@
+PODS:
+  - Masonry (0.3.0)
+  - Underscore.m (0.2.1)
+
+DEPENDENCIES:
+  - Masonry
+  - Underscore.m
+
+SPEC CHECKSUMS:
+  Masonry: f7e7e5692c9133b7ee44d1a17b1c64ad423cd64e
+  Underscore.m: 593ea54a19d3cc4439387a83d36eb7ba6ffd1707
+
+COCOAPODS: 0.28.0

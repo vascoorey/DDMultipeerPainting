@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59AEBC62F2C042D8AF429A3D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FA56034806C42A2B2E762D7 /* libPods.a */; };
 		BC243B8818356C6A00827591 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC243B8718356C6A00827591 /* Foundation.framework */; };
 		BC243B8A18356C6A00827591 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC243B8918356C6A00827591 /* CoreGraphics.framework */; };
 		BC243B8C18356C6A00827591 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC243B8B18356C6A00827591 /* UIKit.framework */; };
@@ -22,7 +23,7 @@
 		BC243BB118356C6A00827591 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BC243BAF18356C6A00827591 /* InfoPlist.strings */; };
 		BC243BB318356C6A00827591 /* DDMultiPeerPaintingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */; };
 		BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBD1835746F00827591 /* DDDrawingView.m */; };
-		BC243BBF1835770900827591 /* DDDrawingView.h in Sources */ = {isa = PBXBuildFile; fileRef = BC243BBC1835746F00827591 /* DDDrawingView.h */; };
+		BCAAEEDF1838095100EA9487 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = BCAAEEDE1838095100EA9487 /* README.md */; };
 		BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE4575718363A9D005BE574 /* DDDrawingData.m */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5FA56034806C42A2B2E762D7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD57A84BBFE64D95A33F8116 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		BC243B8418356C6A00827591 /* DDMultiPeerPainting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DDMultiPeerPainting.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC243B8718356C6A00827591 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BC243B8918356C6A00827591 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +61,7 @@
 		BC243BB218356C6A00827591 /* DDMultiPeerPaintingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDMultiPeerPaintingTests.m; sourceTree = "<group>"; };
 		BC243BBC1835746F00827591 /* DDDrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DDDrawingView.h; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.h; sourceTree = "<group>"; };
 		BC243BBD1835746F00827591 /* DDDrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DDDrawingView.m; path = ../../DDMultipeerPainting/DDMultiPeerPainting/DDDrawingView.m; sourceTree = "<group>"; };
+		BCAAEEDE1838095100EA9487 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		BCE4575618363A9D005BE574 /* DDDrawingData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDrawingData.h; sourceTree = "<group>"; };
 		BCE4575718363A9D005BE574 /* DDDrawingData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDrawingData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +74,7 @@
 				BC243B8A18356C6A00827591 /* CoreGraphics.framework in Frameworks */,
 				BC243B8C18356C6A00827591 /* UIKit.framework in Frameworks */,
 				BC243B8818356C6A00827591 /* Foundation.framework in Frameworks */,
+				59AEBC62F2C042D8AF429A3D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,10 +94,12 @@
 		BC243B7B18356C6A00827591 = {
 			isa = PBXGroup;
 			children = (
+				BCAAEEDE1838095100EA9487 /* README.md */,
 				BC243B8D18356C6A00827591 /* DDMultiPeerPainting */,
 				BC243BAC18356C6A00827591 /* DDMultiPeerPaintingTests */,
 				BC243B8618356C6A00827591 /* Frameworks */,
 				BC243B8518356C6A00827591 /* Products */,
+				AD57A84BBFE64D95A33F8116 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,6 +119,7 @@
 				BC243B8918356C6A00827591 /* CoreGraphics.framework */,
 				BC243B8B18356C6A00827591 /* UIKit.framework */,
 				BC243BA618356C6A00827591 /* XCTest.framework */,
+				5FA56034806C42A2B2E762D7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,15 +127,15 @@
 		BC243B8D18356C6A00827591 /* DDMultiPeerPainting */ = {
 			isa = PBXGroup;
 			children = (
+				BCE4575618363A9D005BE574 /* DDDrawingData.h */,
+				BCE4575718363A9D005BE574 /* DDDrawingData.m */,
+				BC243B9C18356C6A00827591 /* DDViewController.h */,
+				BC243B9D18356C6A00827591 /* DDViewController.m */,
+				BC243BBC1835746F00827591 /* DDDrawingView.h */,
+				BC243BBD1835746F00827591 /* DDDrawingView.m */,
 				BC243B9618356C6A00827591 /* DDAppDelegate.h */,
 				BC243B9718356C6A00827591 /* DDAppDelegate.m */,
 				BC243B9918356C6A00827591 /* Main.storyboard */,
-				BC243B9C18356C6A00827591 /* DDViewController.h */,
-				BC243B9D18356C6A00827591 /* DDViewController.m */,
-				BCE4575618363A9D005BE574 /* DDDrawingData.h */,
-				BCE4575718363A9D005BE574 /* DDDrawingData.m */,
-				BC243BBC1835746F00827591 /* DDDrawingView.h */,
-				BC243BBD1835746F00827591 /* DDDrawingView.m */,
 				BC243B9F18356C6A00827591 /* Images.xcassets */,
 				BC243B8E18356C6A00827591 /* Supporting Files */,
 			);
@@ -170,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC243BB618356C6A00827591 /* Build configuration list for PBXNativeTarget "DDMultiPeerPainting" */;
 			buildPhases = (
+				971F2EF5A4034C84ABF64EC4 /* Check Pods Manifest.lock */,
 				BC243B8018356C6A00827591 /* Sources */,
 				BC243B8118356C6A00827591 /* Frameworks */,
 				BC243B8218356C6A00827591 /* Resources */,
+				A46FFFFA83A14DD3AF4B843E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,6 +252,7 @@
 			files = (
 				BC243BA018356C6A00827591 /* Images.xcassets in Resources */,
 				BC243B9218356C6A00827591 /* InfoPlist.strings in Resources */,
+				BCAAEEDF1838095100EA9487 /* README.md in Resources */,
 				BC243B9B18356C6A00827591 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -256,13 +267,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		971F2EF5A4034C84ABF64EC4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A46FFFFA83A14DD3AF4B843E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BC243B8018356C6A00827591 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BC243B9818356C6A00827591 /* DDAppDelegate.m in Sources */,
-				BC243BBF1835770900827591 /* DDDrawingView.h in Sources */,
 				BC243BBE1835746F00827591 /* DDDrawingView.m in Sources */,
 				BC243B9E18356C6A00827591 /* DDViewController.m in Sources */,
 				BCE4575818363A9D005BE574 /* DDDrawingData.m in Sources */,
@@ -392,6 +435,7 @@
 		};
 		BC243BB718356C6A00827591 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD57A84BBFE64D95A33F8116 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -405,6 +449,7 @@
 		};
 		BC243BB818356C6A00827591 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD57A84BBFE64D95A33F8116 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
