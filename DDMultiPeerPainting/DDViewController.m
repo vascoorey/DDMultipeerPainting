@@ -13,9 +13,9 @@
 @import MultipeerConnectivity;
 
 static NSString *const DDServiceType = @"deltadogdrawing";
-static NSString *const DDState = @"drawingstate";
-static NSString *const DDXCoordinate = @"x-coordinate";
-static NSString *const DDYCoordinate = @"y-coordinate";
+static NSString *const DDState = @"s";
+static NSString *const DDXCoordinate = @"x";
+static NSString *const DDYCoordinate = @"y";
 
 @interface DDViewController () <MCNearbyServiceAdvertiserDelegate, MCNearbyServiceBrowserDelegate, MCSessionDelegate, Drawing>
 @property (nonatomic, strong) DDDrawingView *drawingView;
@@ -139,22 +139,10 @@ static NSString *const DDYCoordinate = @"y-coordinate";
 
 #pragma mark - Drawing Delegate
 
-//-(void)drawingView:(DDDrawingView *)drawingView didAddPath:(UIBezierPath *)path
-//{
-//  NSError *error;
-//  NSData *data = [NSKeyedArchiver archivedDataWithRootObject:path];
-//  NSLog(@"Size to send: %lu", (unsigned long)data.length);
-//  [self.session sendData:data toPeers:self.peers withMode:MCSessionSendDataReliable error:&error];
-//  if(error)
-//  {
-//    NSLog(@"%@", error.localizedDescription);
-//  }
-//}
-
 -(void)drawingView:(DDDrawingView *)drawingView didDrawPoint:(CGPoint)point withState:(DDDrawingState)state
 {
   NSError *error = nil;
-  NSDictionary *dictionary = @{ DDState : @(state), DDXCoordinate : @(point.x), DDYCoordinate : @(point.y) };
+  NSDictionary *dictionary = @{ DDState : @(state), DDXCoordinate : @((short)point.x), DDYCoordinate : @((short)point.y) };
   NSData *data = [NSPropertyListSerialization dataWithPropertyList:dictionary format:NSPropertyListBinaryFormat_v1_0 options:0 error:&error];
   if(error)
   {
